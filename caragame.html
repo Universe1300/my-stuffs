@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>dino</title>
+</head>
+<style>
+
+  body{
+    background-color: green;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    color: white;
+  }
+
+  h2 {
+    color: white;
+  }
+  div {
+    width: 50px;
+    height: 50px;
+    position: relative;
+  }
+  #player {
+    background-color: transparent;
+    left: 45%;
+    top: 330px;
+    margin: 0px;
+    transition: 0.2s;
+  }
+  .obj{
+    left: 45%;
+    background-color: transparent;
+  }
+  .m {
+    position: relative;
+    transform: rotate(90deg);
+    left: 600px;
+    top: 0px;
+  }
+  #carp {
+    position: relative;
+    transform: rotate(-90deg);
+    width: 100px;
+    height: 100%;
+    left: -25px;
+  }
+  #car1 {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    transform: rotate(-180deg);
+  }
+  #car2 {
+    width: 90px;
+    height: 50px;
+    left: -17px;
+    position: relative;
+    transform: rotate(90deg);
+  }
+  #car3 {
+    width: 110px;
+    height: 100px;
+    left: -30px;
+    position: relative;
+    transform: rotate(-180deg);
+  }
+  #car4 {
+    width: 90px;
+    height: 50px;
+    left: -20px;
+    position: relative;
+    transform: rotate(90deg);
+  }
+  #car5 {
+    width: 90px;
+    height: 50px;
+    left: -20px;
+    position: relative;
+    transform: rotate(90deg);
+  }
+  #explosion{
+    width: 100px;
+    height: 100px;
+    visibility: hidden;
+    position: relative;
+    left: -20px;
+    top: -80px;
+  }
+  #gamebox{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: -900px;
+  }
+  #street {
+    background-color: rgb(70, 69, 69);
+    background-size: 400px 1000px;
+    height: 1300px;
+    width: 400px;
+    left: 36%;
+    top: 600px; 
+    position: relative;
+  }
+  #lines {    
+    width: 120px;
+    height: 1500px;
+    position: absolute;
+    left: 43%;
+    top: 420px;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23FDE400FF' stroke-width='10' stroke-dasharray='20%2c 50' stroke-dashoffset='12' stroke-linecap='square'/%3e%3c/svg%3e");
+  }
+
+  #solidline {  
+    border-style: solid;
+    border-color: white;
+    border-width: 5px;
+    width: 350px;
+    height: 1500px;
+    position: absolute;
+    left: 37%;
+    top: 420px;
+  }
+  #forest {
+    top: 300px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url("https://png.pngtree.com/png-clipart/20230119/original/pngtree-tree-plan-drawing-top-view-png-image_8922252.png");
+  }
+  #menu {
+    width: 100%;
+    height: 1500px;
+    background-color: darkslategrey;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+  button{
+    font-size: 30px;
+    width: 200px;
+    height: 80px;
+    border-radius: 15px;
+    border-style: solid;
+  }
+  #play {
+    background-color: chartreuse;
+    position: absolute;
+    left: 43%;
+    top: 20%;
+  }
+
+  #autoplay {
+    background-color: red;
+    position: absolute;
+    left: 43%;
+    top: 30%;
+  }
+  #retrybutton{
+    background-color: chartreuse;
+    visibility: hidden;
+    position: relative;
+    left: 41%;
+  }
+  p{
+    position: absolute;
+    color: white;
+    font-size: 60px;
+    text-align: center;
+  }
+  h2{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: black;
+    top: 10px;
+  }
+  #controls {
+    width: 600px;
+    height: 50px;
+    position: relative;
+    top: 50%;
+    left: 27%;
+  }
+  #help {
+    font-size: 15px;    
+    color: rgb(148, 147, 147);
+    left: 40%;
+    top: 100px;
+  }
+  #title {
+    left: 40%;
+  }
+
+</style>
+<body>
+  <h1 id="number"></h1>
+  <h2 id="number2"></h2>
+<div id="gamebox">
+  <div id="street"></div>  
+  <span id="lines"></span>
+  <div id="player"><img id="carp" src="https://openclipart.org/image/800px/234440"><img id="explosion" src="https://upload.wikimedia.org/wikipedia/commons/7/79/Operation_Upshot-Knothole_-_Badger_001.jpg"></div>
+  <div id="object1" class="obj"><img id="car1" src="https://static.vecteezy.com/system/resources/previews/009/398/887/original/car-top-view-clipart-design-illustration-free-png.png"></div>
+  <div id="object2" class="obj"><img id="car2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Travel-car-topview.svg/2560px-Travel-car-topview.svg.png"></div>
+  <div id="object3" class="obj"><img id="car3" src="https://freepngimg.com/save/75694-birds-eye-car-top-view,plan-view-icon/800x800"></div>
+  <div id="object4" class="obj"><img id="car4" src="https://pixy.org/src/38/383475.png"></div>
+  <div id="object5" class="obj"><img id="car5" src="https://www.clker.com/cliparts/M/B/B/k/9/5/purple-car-top-view-hi.png"></div>
+  <span id="solidline"></span>
+  <button id="retrybutton" onclick="autorespawn()">Retry</button>
+</div>
+<div id="menu">
+  <p id="title">car stuff game</p>
+    <button id="play" onclick="setInterval(game, 12)">play</button>
+
+    <button id="autoplay" onclick="setInterval(autogame,12)">autoplay</button>
+
+    <
+
+    <div id="controls"> <p id="help">a key = left and d key = right OR left and right arrows</p> </div>
+</div>
+
+  <script>
+    var restart = document.getElementById("retrybutton");
+    document.body.addEventListener("keydown", playerMovement);
+    var scorenum = document.getElementById("number");
+    var player = document.getElementById("player");
+    var lines = document.getElementById("lines");
+    var objects = document.getElementsByClassName("obj");
+    var posx = 45;
+    var pos2 = -1550;
+    var pos3 = -1100;
+    var pos4 = -600;
+    var pos5 = -1800;
+    var pos6 = -2100;
+    var speed = 7;
+    var score = 0;
+    var streetspeed = 6;
+    var streetpos = 600;
+    var death = 0;
+    var offtrack = 5;
+    var move = 0;
+    var direction = 0.1;
+
+    function game(){
+      document.getElementById("menu").style.visibility = "hidden";
+      scorenum.innerHTML = score;
+      player.style.left = posx +"%";
+      objects[0].style.top = pos2 +"px";
+      objects[1].style.top = pos3 +"px";
+      objects[2].style.top = pos4 +"px";
+      objects[3].style.top = pos5 +"px";
+      objects[4].style.top = pos6 +"px";
+      streetpos += streetspeed;
+
+      if(death == 0){ 
+        restart.style.visibility = "hidden";
+        move = 5;  
+        score++;
+      }
+
+
+      if(death != 0){
+        restart.style.visibility = "visible";
+        scorenum.innerHTML = "noob";
+        if(direction > 0){
+          direction -= 0.5;
+        }
+        if(direction < 0){
+          direction += 0.5;
+        }
+        if(streetspeed > 0){
+          streetspeed -= 0.05;
+        }
+        if(streetspeed < 0){
+          streetspeed = 0;
+        }
+      }
+      pos2+= speed;
+      pos3+= speed;
+      pos4+= speed;
+      pos5+= speed;
+      pos6+= speed;
+
+      lines.style.top =  streetpos+"px";
+      if(streetpos > 670){
+        streetpos = 600;
+      }
+    
+      if(score > 880){
+        speed = 8;
+        if(death == 0){
+          streetspeed = 6.5;          
+        }
+      }
+      if(score > 900){
+        speed = 9;
+        if(death == 0){
+          streetspeed = 7.2;          
+        }
+      }
+      if(score > 930){
+        speed = 10;
+        if(death == 0){
+          streetspeed = 8.7;          
+        }
+      }
+      if(score > 970){
+        speed = 11;
+        if(death == 0){
+          streetspeed = 9.3;          
+        }
+      }
+      if(score > 1000){
+        speed = 12;
+        if(death == 0){
+          streetspeed = 10.5;          
+        }
+      }
+      if(score >2500){
+        speed = 17;
+        if(death == 0){
+          streetspeed = 15;          
+        }
+      }
+      if(score >4500){
+        speed = 22;
+        if(death == 0){
+          streetspeed = 20;          
+        }
+      }
+
+
+      if(pos2 > 850){
+        var num = Math.floor((Math.random() * 4) + 1);
+        pos2 = -710; 
+        if(num == 1){
+          objects[0].style.left = "40%";
+        }else if(num == 2){
+          objects[0].style.left = "45%";
+        }else if(num == 3){
+          objects[0].style.left = "50%";
+        }       
+      }
+
+      if(pos3 > 850){
+        var num2 = Math.floor((Math.random() * 4) + 1);
+        pos3 = -710;
+        if(num2 == 1){
+          objects[1].style.left = "40%";
+        }else if(num2 == 2){
+          objects[1].style.left = "45%";
+        }else if(num2 == 3){
+          objects[1].style.left = "50%";
+        }
+      }
+
+      if(pos4 > 850){
+        var num3 = Math.floor((Math.random() * 4) + 1);
+        pos4 = -710;
+        if(num3 == 1){
+          objects[2].style.left = "40%";
+        }else if(num3 == 2){
+          objects[2].style.left = "45%";
+        }else if(num3 == 3){
+          objects[2].style.left = "50%";
+        }
+      }
+
+      if(pos5 > 1450){
+        var num4 = Math.floor((Math.random() * 4) + 1);
+        pos5 = -710;
+        if(num4 == 1){
+          objects[3].style.left = "40%";
+        }else if(num4 == 2){
+          objects[3].style.left = "45%";
+        }else if(num4 == 3){
+          objects[3].style.left = "50%";
+        }
+      }
+      if(pos6 > 1350){
+        var num5 = Math.floor((Math.random() * 4) + 1);
+        pos6 = -710;
+        if(num5 == 1){
+          objects[4].style.left = "40%";
+        }else if(num5 == 2){
+          objects[4].style.left = "45%";
+        }else if(num5 == 3){
+          objects[4].style.left = "50%";
+        }
+      }
+      var playerbox = document.getElementById("player");
+      var playerpos = playerbox.getBoundingClientRect();
+      var car1 = document.getElementById("object1").getBoundingClientRect();
+      var car2 = document.getElementById("object2").getBoundingClientRect();
+      var car3 = document.getElementById("object3").getBoundingClientRect();
+      var car4 = document.getElementById("object4").getBoundingClientRect();
+      var car5 = document.getElementById("object5").getBoundingClientRect();
+      if(car1.top.toFixed() > 690 && car1.top.toFixed() < 850 && car1.left.toFixed() == playerpos.left.toFixed()){
+        death++
+      }
+      if(car2.top.toFixed() > 710 && car2.top.toFixed() < 860 && car2.left.toFixed() == playerpos.left.toFixed()){
+        death++     
+      }
+      if(car3.top.toFixed() > 690 && car3.top.toFixed() < 860 && car3.left.toFixed() == playerpos.left.toFixed()){
+        death++ 
+      }
+      if(car4.top.toFixed() > 710 && car4.top.toFixed() < 860 && car4.left.toFixed() == playerpos.left.toFixed()){
+        death++ 
+      }
+      if(car5.top.toFixed() > 710 && car5.top.toFixed() < 860 && car5.left.toFixed() == playerpos.left.toFixed()){
+        death++ 
+      }
+    }
+
+
+    function playerMovement(e) {
+      if(death == 0){
+        if(e.key == "a" || e.key == "A" || e.key == "ArrowLeft"){
+          if(posx > 40){
+            posx -= move;        
+          }
+        }
+        if(e.key == "d" || e.key == "d" || e.key == "ArrowRight"){
+          if(posx < 50){
+            posx += move;          
+          }
+        }
+      }
+    }
+
+    function autogame(){
+      move = 0;
+      document.getElementById("menu").style.visibility = "hidden";
+
+      scorenum.innerHTML = score;
+      player.style.left = posx +"%";
+      objects[0].style.top = pos2 +"px";
+      objects[1].style.top = pos3 +"px";
+      objects[2].style.top = pos4 +"px";
+      objects[3].style.top = pos3 +"px";
+      objects[4].style.top = pos4 +"px";
+
+      streetpos += streetspeed;
+
+      if(death == 0){      
+        restart.style.visibility = "hidden";
+        score++;
+
+      }
+
+
+      if(death != 0){ 
+        restart.style.visibility = "visible";
+        scorenum.innerHTML = "noob";
+        if(direction > 0){
+          direction -= 0.5;
+        }
+        if(direction < 0){
+          direction += 0.5;
+        }
+        if(streetspeed > 0){
+          streetspeed -= 0.05;
+        }
+        if(streetspeed < 0){
+          streetspeed = 0;
+        }
+      }
+      pos2+= speed;
+      pos3+= speed;
+      pos4+= speed;
+      pos5+= speed;
+      pos6+= speed;
+
+      lines.style.top =  streetpos+"px";
+      if(streetpos > 670){
+        streetpos = 600;
+      }
+    
+      if(score > 880){
+        speed = 8;
+        if(death == 0){
+          streetspeed = 6.5;          
+        }
+      }
+      if(score > 900){
+        speed = 9;
+        if(death == 0){
+          streetspeed = 7.2;          
+        }
+      }
+      if(score > 930){
+        speed = 10;
+        if(death == 0){
+          streetspeed = 8.7;          
+        }
+      }
+      if(score > 970){
+        speed = 11;
+        if(death == 0){
+          streetspeed = 9.3;          
+        }
+      }
+      if(score > 1000){
+        speed = 12;
+        if(death == 0){
+          streetspeed = 10.5;          
+        }
+      }
+      if(score >2500){
+        speed = 15;
+        if(death == 0){
+          streetspeed = 15;          
+        }
+      }
+      if(score >4500){
+        speed = 16;
+        if(death == 0){
+          streetspeed = 20;          
+        }
+      }
+      if(score >5000){
+        speed = 17;
+        if(death == 0){
+          streetspeed = 22;          
+        }
+      }
+      if(score >5500){
+        speed = 18;
+        if(death == 0){
+          streetspeed = 25;          
+        }
+      }
+      if(score >6000){
+        speed = 19;
+        if(death == 0){
+          streetspeed = 27;          
+        }
+      }
+      if(score >6200){
+        speed = 21;
+        if(death == 0){
+          streetspeed = 29;          
+        }
+      }
+
+
+      if(pos2 > 850){
+        var num = Math.floor((Math.random() * 4) + 1);
+        pos2 = -710; 
+        if(num == 1){
+          objects[0].style.left = "40%";
+        }else if(num == 2){
+          objects[0].style.left = "45%";
+        }else if(num == 3){
+          objects[0].style.left = "50%";
+        }       
+      }
+
+      if(pos3 > 850){
+        var num2 = Math.floor((Math.random() * 4) + 1);
+        pos3 = -710;
+        if(num2 == 1){
+          objects[1].style.left = "40%";
+        }else if(num2 == 2){
+          objects[1].style.left = "45%";
+        }else if(num2 == 3){
+          objects[1].style.left = "50%";
+        }
+      }
+
+
+      if(pos4 > 850){
+        var num3 = Math.floor((Math.random() * 4) + 1);
+        pos4 = -710;
+        if(num3 == 1){
+          objects[2].style.left = "40%";
+        }else if(num3 == 2){
+          objects[2].style.left = "45%";
+        }else if(num3 == 3){
+          objects[2].style.left = "50%";
+        }
+      }
+
+      if(pos5 > 850){
+        var num4 = Math.floor((Math.random() * 4) + 1);
+        pos3 = -710;
+        if(num4 == 1){
+          objects[3].style.left = "40%";
+        }else if(num5 == 2){
+          objects[3].style.left = "45%";
+        }else if(num5 == 3){
+          objects[3].style.left = "50%";
+        }
+      }
+
+      if(pos6 > 850){
+        var num5 = Math.floor((Math.random() * 4) + 1);
+        pos4 = -710;
+        if(num3 == 1){
+          objects[4].style.left = "40%";
+        }else if(num3 == 2){
+          objects[4].style.left = "45%";
+        }else if(num3 == 3){
+          objects[4].style.left = "50%";
+        }
+      }
+      var playerbox = document.getElementById("player");
+      var playerpos = playerbox.getBoundingClientRect();
+      var car1 = document.getElementById("object1").getBoundingClientRect();
+      var car2 = document.getElementById("object2").getBoundingClientRect();
+      var car3 = document.getElementById("object3").getBoundingClientRect();
+      var car4 = document.getElementById("object4").getBoundingClientRect();
+      var car5 = document.getElementById("object5").getBoundingClientRect();
+      if(car1.top.toFixed() > 450 && car1.top.toFixed() < 850 && car1.left.toFixed() == playerpos.left.toFixed()){
+        if(death == 0){
+          if(posx == 50 || posx == 40){
+            posx = 45;
+          }            
+          if(posx == 45){  
+            var dodge1 = Math.floor((Math.random() * 3) + 1); 
+            if(dodge1 == 1){
+              posx = 50;
+            }
+            if(dodge1 == 2){
+              posx = 40;
+            }
+          }
+        }
+      }
+
+      if(car2.top.toFixed() > 450 && car2.top.toFixed() < 850 && car2.left.toFixed() == playerpos.left.toFixed()){ 
+        if(death == 0){
+          if(posx == 50 || posx == 40){
+            posx = 45;
+          }
+          if(posx == 45){     
+            var dodge2 = Math.floor((Math.random() * 3) + 1);
+            if(dodge2 == 1){
+              posx = 50;
+            }
+            if(dodge2 == 2){
+              posx = 40;
+            }
+          }
+        }
+      }
+
+      if(car3.top.toFixed() > 450 && car3.top.toFixed() < 850 && car3.left.toFixed() == playerpos.left.toFixed()){
+        if(death == 0){
+          if(posx == 50 || posx == 40){
+            posx = 45;
+          }
+          if(posx == 45){    
+            var dodge3 = Math.floor((Math.random() * 3) + 1);    
+            if(dodge3 == 1){
+              posx = 50;
+            }
+            if(dodge3 == 2){
+              posx = 40;
+            }
+          }
+        }
+      }
+      if(car4.top.toFixed() > 450 && car4.top.toFixed() < 850 && car4.left.toFixed() == playerpos.left.toFixed()){
+        if(death == 0){
+          if(posx == 50 || posx == 40){
+            posx = 45;
+          }
+          if(posx == 45){    
+            var dodge4 = Math.floor((Math.random() * 3) + 1);    
+            if(dodge4 == 1){
+              posx = 50;
+            }
+            if(dodge4 == 2){
+              posx = 40;
+            }
+          }
+        }
+      }
+      if(car5.top.toFixed() > 450 && car5.top.toFixed() < 850 && car5.left.toFixed() == playerpos.left.toFixed()){
+        if(death == 0){
+          if(posx == 50 || posx == 40){
+            posx = 45;
+          }
+          if(posx == 45){    
+            var dodge5 = Math.floor((Math.random() * 3) + 1);    
+            if(dodge5 == 1){
+              posx = 50;
+            }
+            if(dodge5 == 2){
+              posx = 40;
+            }
+          }
+        }
+      }
+      if(car1.top.toFixed() > 690 && car1.top.toFixed() < 850 && car1.left.toFixed() == playerpos.left.toFixed()){
+        death++;
+      }
+      if(car2.top.toFixed() > 710 && car2.top.toFixed() < 860 && car2.left.toFixed() == playerpos.left.toFixed()){ 
+        death++;
+      }
+      if(car3.top.toFixed() > 690 && car3.top.toFixed() < 860 && car3.left.toFixed() == playerpos.left.toFixed()){
+        death++;
+      }
+      if(car4.top.toFixed() > 710 && car4.top.toFixed() < 860 && car4.left.toFixed() == playerpos.left.toFixed()){ 
+        death++;
+      }
+      if(car5.top.toFixed() > 690 && car5.top.toFixed() < 860 && car5.left.toFixed() == playerpos.left.toFixed()){
+        death++;
+      }
+    }
+    function autorespawn(){
+      death = 0;
+      posx = 45;
+      score = 0;
+      streetspeed = 6;
+      speed = 7;
+    }
+  </script>
+</body>
+</html>

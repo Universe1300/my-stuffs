@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    html {
+    	height: 100%;
+
+    }
+    #colorpicker{
+        margin: 0 auto;
+    }
+    #rows{
+        visibility: hidden;
+        padding: 30px;
+        background-color: rgba(0, 0, 0, 0.5);
+        -webkit-backdrop-filter: blur(7px);
+        backdrop-filter: blur(7px);
+        margin: 0 auto;
+        border-radius: 20px;
+    }
+
+    button:hover{
+        width: 28%; height: 100px;
+    }
+    
+    .heads{
+        font-size: 15px;
+        color: white;
+        text-align: center;
+    }
+    body{
+	    overflow-y: hidden;
+	    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+        background-image: url("wallpaperbetter.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100%;
+        background-size: 100% 100%;
+        width: 100%;
+    }
+
+    td{
+        border-color: black;
+        width: 15px;
+        height: 15px;
+    }
+    #grids {
+        padding: 50px;
+    }
+    .buttons{
+        background-color: rgba(0, 0, 0, 0.4);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        transition: width 0.5s , height 0.5s;
+        color: white;
+        margin: 0 auto;
+        display: block;
+        width: 25%;
+        height: 100px;
+        font-size: 35px;
+        border-radius: 20px;
+        border-color: transparent;
+    }
+    table {
+    	margin: auto;
+        border-width: 1px;
+        border-style: solid;
+        border-color: white;
+    }
+    #news {
+        border-width: 1px;
+        border-style: solid;
+        border-color: white;
+        visibility: hidden;
+    }
+    #specific{
+        width: 400px;
+        height: 100px;
+        visibility: hidden;
+    }
+    .tops {
+        background-color: rgba(0, 0, 0, 0.4);
+        margin: auto;
+        width: 300px;
+        height: 125px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: white;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding:20px;
+        margin-top: 150px;
+    }
+    #tests{
+        background-color: transparent;
+        color: white;
+        display: block;
+        font-size: 30px;
+        height: 60px;
+        border-color: transparent;
+        margin: auto;
+        width: 250px;
+    }
+    #arrays{
+        border-width: 1px;
+        border-style: solid;
+        border-color: white;
+        color: white;
+        font-size:10px;
+        word-spacing: 1px;
+        visibility: hidden;
+    }
+    #js-copy{
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        font-size: 10px;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+	    border-width: 1px;
+	    border-style: solid;
+	    border-color: white;
+        border-radius: 20px;
+    }
+</style>
+</head>
+<body>    
+    <div class="tops">
+    <h1 class="heads">LED GRID MAKER</h1>
+    <h2 class="heads">mainly used with FastLED</h2>
+    <button onclick="createrow()" id="tests"> CREATE GRID</button>
+    </div>
+    <div id="grids">
+    <table id="rows" border="1"></table>
+    </div>
+    <button onclick="generate()" class="buttons" id="news">generate</button>
+    <p class="paras" id="arrays">
+    </p>
+</body>
+<script>
+    var button = document.getElementById("news");
+    var cellsnum = 0;
+    var rowsnum = 0;
+    function createrow(){
+///generate the grid///
+        button.setAttribute("style","visibility: visible");
+        var elem = document.getElementById("rows");
+        var rowsnum = prompt("how many rows?");
+        cellsnum = prompt("how many cells?");
+
+        for(var i =0; i < rowsnum; i++){
+            elem.appendChild(document.createElement("tr"));
+        }
+        var rowam = document.getElementsByTagName("tr");
+        for(var j = 0; j < rowsnum; j++){
+            for(var i = 0; i < cellsnum; i++){
+                rowam[j].appendChild(document.createElement("td"));
+            }
+        }
+        var amountd = document.getElementsByTagName("td");
+        var grids = document.getElementById("rows");
+        grids.setAttribute("style","visibility: visible");
+        var tdlen = document.querySelectorAll("td");
+        for(var i = 0; i < tdlen.length; i++){
+           tdlen[i].addEventListener("click",selected);
+        }
+    }
+
+///changes cell color when selected///
+    function selected(){
+        if(this.hasAttribute("style","background-color: white")){
+            this.removeAttribute("style");
+        }else{
+            this.setAttribute("style","background-color: white");
+        } 
+    }
+
+///generates the arduino code///
+    var amouns = document.getElementsByTagName("td");
+    function generate(){
+	document.body.setAttribute("style","overflow-y: visible");
+        var boxs = document.getElementById("arrays");
+        var cellam = cellsnum;
+        var rowam = rowsnum;
+        var stuffs = [];
+        for(var i = 0; i < amouns.length; i++){
+            if(amouns[i].hasAttribute("style","background-color: white")){
+                stuffs.push(1);
+            }else{
+                stuffs.push(0);
+            }
+        }
+        var pars = document.getElementsByTagName("p");
+        for(var i = 0; i < pars.length; i++){
+           pars[i].setAttribute("style","color:white");
+        }
+
+        var para = document.createElement("p");
+        para.innerHTML = "<br>" + "#include &lt;" +"FastLED.h" + "&gt; <br>" + "#define NUM_LEDS " + amouns.length + "<br> int arrs[] = {" +stuffs+"};" + "<br>" + "<br>" + "#define LED_PIN 8<br>" + "CRGB leds[NUM_LEDS];<br>" + "void setup() { <br>" + "&nbsp; &nbsp; &nbsp; &nbsp; ///make sure to change some things here to match your rgb strip and power<br>" + "&nbsp; &nbsp; &nbsp; &nbsp;  FastLED.addLeds &lt; WS2812B, LED_PIN, GRB &gt; (leds, NUM_LEDS);<br>" + " &nbsp; &nbsp; &nbsp; &nbsp;  FastLED.setMaxPowerInVoltsAndMilliamps(9, 500);<br>" + " &nbsp; &nbsp; &nbsp; &nbsp;  FastLED.clear();<br>" + " &nbsp; &nbsp; &nbsp; &nbsp;  FastLED.show();<br>" + "}<br>" + "<br>" + "void loop(){<br>" + " &nbsp;&nbsp;&nbsp;&nbsp;     for(int i=0; i &lt; NUM_LEDS; i++){<br>" + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         if(arrs[i] == 1){ <br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; leds[i] = CRGB(225,225,225);<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FastLED.setBrightness(100);<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FastLED.show();<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }else{<br>" +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;leds[i] = CRGB(0,0,0);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "FastLED.show();<br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>" + "&nbsp;&nbsp;&nbsp;&nbsp; }<br>";
+
+        var finds = document.getElementById("arrays");
+        finds.setAttribute("style","visibility: visible");
+        para.setAttribute("id","js-copy");
+        para.style.overflow = "hidden";
+        document.body.insertBefore(para,finds);
+    }
+</script>
+</html>
