@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+    <html>
+      <head>
+        <title>UI</title>
+        <link href='https://fonts.googleapis.com/css?family=Rajdhani' rel='stylesheet'>
+      </head>
+    <style>
+
+    a:link {
+      text-decoration: none;
+      color: black;
+    }
+    a:visited { 
+      text-decoration: none;
+    }
+
+    #topbar a{
+      padding-right: 30px;
+      font-size: 45px;
+      padding-left: 10px;
+    }
+
+    #topbar {
+      left:-10px;
+      width: 5000px;
+      height: 50px;
+      background-image: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0));
+      border-radius: 0px;
+      top : -100px;
+      color: black;
+    }
+    #cube1 {
+      box-shadow:0 0 100px rgb(42, 165, 83);
+      width: 100px;
+      height: 100px;
+      background-color: rgb(51, 189, 85);
+      top:-200px;
+    }
+    #b1 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(42, 165, 83);
+      margin: auto;
+      display: block;
+      position: relative;
+      top:-100px;
+    }
+    #b11 {
+      margin: auto;
+      display: block;
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: rgb(31, 120, 53);
+    }
+    #cube2 {
+      box-shadow:0 0 100px rgb(89, 0, 255);
+      width: 100px;
+      height: 100px;
+      background-color: rgb(166, 59, 247);
+      left: 30px;
+      top: -200px;
+    }
+    #b2 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(114, 42, 168);
+      left: 30px;
+      top:-100px;
+    }
+    #b22 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(64, 24, 94);
+      left: 30px;
+      top:0px;
+    }
+    #cube3 {
+      box-shadow:0 0 100px blue;
+      width: 100px;
+      height: 100px;
+      background-color: rgb(65, 63, 232);
+      left: -20px;
+      top: -200px;
+    }
+    #b3 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(45, 43, 166);
+      left: -20px;
+      top: -100px;
+    }
+    #b33 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(28, 27, 102);
+      left: -20px;
+      top:0px;
+    }
+    
+    #cube4 {
+      box-shadow:0 0 100px 1px rgb(255, 25, 129);
+      width: 100px;
+      height: 100px;
+      background-color: rgb(255, 25, 129);
+      top: -200px;
+    }
+    #b4 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(186, 20, 95);
+      top: -100px;
+    }
+    #b44{
+      width: 100px;
+      height: 100px;
+      background-color: rgb(120, 14, 62);
+      top: 0px;
+    }
+    #cube5 {
+      box-shadow:0 0 100px 1px yellow;
+      width: 100px;
+      height: 100px;
+      background-color: rgb(246, 255, 79);
+      top: -200px;
+      left: 10px;
+    }
+    #b5 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(180, 186, 58);
+      top: -100px;
+      left: 10px;
+    }
+    #b55 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(121, 125, 41);
+      top: 0px;
+      left:10px;
+    }
+    
+    #cube6 {
+      box-shadow: 0 0 100px rgb(255, 148, 77);
+      width: 100px;
+      height: 100px;
+      background-color: rgb(255, 148, 77);
+      top: -200px;
+      left: -50px;
+    }
+    #b6 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(166, 96, 50);
+      top: -100px;
+      left: -50px;
+    }
+    #b66 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(105, 60, 30);
+      top: 0px;
+      left:-50px;
+    }
+    #cube7 {
+      box-shadow: 0 0 100px rgb(0, 125, 173);
+      width: 100px;
+      height: 100px;
+      background-color: rgb(0, 125, 173);
+      top: -200px;
+      left: 50px;
+    }
+    #b7 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(30, 72, 125);
+      top: -100px;
+      left: 50px;
+    }
+    #b77 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(60, 43, 74);
+      top: 0px;
+      left:50px;
+    }
+    #cube8 {
+      box-shadow: 0 0 100px rgb(230, 100, 237);
+      width: 100px;
+      height: 100px;
+      background-color: rgb(230, 100, 237);
+      top: -200px;
+      left: 0px;
+    }
+    #b8 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(166, 72, 171);
+      top: -100px;
+      left: 0px;
+    }
+    #b88 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(99, 45, 102);
+      top: 0px;
+      left:0px;
+    }
+    
+    div{
+      margin: auto;
+      display: block;
+      position: relative;
+      transition: .5s;
+      border-radius: 100px;
+    }
+    
+    
+    
+    .delay {
+      transition: .7s;
+    }
+    .delay2 {
+      transition: .9s;
+    }
+    
+    #cubeb1 {
+      width: 130px;
+      height: 100px;
+      left: 0px;
+      top: -100px;
+    }
+    #cubeb2 {
+      width: 130px;
+      height: 100px;
+      left: 220px;
+      top: 50px;
+    }
+    #cubeb3 {
+      width: 130px;
+      left: -230px;
+      top: -50px;
+      height: 100px;
+    }
+    #cubeb4 {
+      width: 130px;
+      height: 100px;
+      top: 100px;
+    }
+    #cubeb5 {
+      width: 130px;
+      height: 100px;
+      left: 140px;
+      top: -100px;
+    }
+    #cubeb6 {
+      width: 130px;
+      height: 100px;
+      left: 200px;
+      top: -500px;
+    }
+    #cubeb7 {
+      width: 130px;
+      height: 100px;
+      left: -200px;
+      top: -600px;
+    }
+    #cubeb8 {
+      width: 130px;
+      height: 100px;
+      left: -150px;
+      top: -400px;
+    }
+    
+    #cubeb1:hover #cube1{
+      transform: translate(0%,130px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb1:hover #b1{
+      transform: translate(0%,180px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb1:hover #b11{
+      transform: translate(0%,230px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb2:hover #cube2{
+      transform: translate(-252px,-120px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb2:hover #b2{
+      transform: translate(-252px,-70px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb2:hover #b22{
+      transform: translate(-252px,-20px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }  
+    #cubeb3:hover #cube3{
+      transform: translate(245px,-120px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }    
+    #cubeb3:hover #b3{
+      transform: translate(245px,-70px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb3:hover #b33{
+      transform: translate(245px,-20px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb4:hover #cube4{
+      transform: translate(0px,-370px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb4:hover #b4{
+      transform: translate(0px,-320px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb4:hover #b44{
+      transform: translate(0px,-270px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb5:hover #cube5{
+      transform: translate(-150px,-280px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb5:hover #b5{
+      transform: translate(-150px,-230px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb5:hover #b55{
+      transform: translate(-150px,-180px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb6:hover #cube6{
+      transform: translate(-150px,20px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb6:hover #b6{
+      transform: translate(-150px,70px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb6:hover #b66{
+      transform: translate(-150px,120px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb7:hover #cube7{
+      transform: translate(150px,20px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb7:hover #b7{
+      transform: translate(150px,70px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb7:hover #b77{
+      transform: translate(150px,120px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb8:hover #cube8{
+      transform: translate(150px,-270px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb8:hover #b8{
+      transform: translate(150px,-220px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb8:hover #b88{
+      transform: translate(150px,-170px) rotate(90deg);
+      width:150px; 
+      height:150px;
+      border-radius: 25px;
+    }
+    #cubeb1:hover #textholder{
+      transform: translate(0px,20px);
+      color: white;
+      font-size: 40px;
+    }
+    #cubeb2:hover #textholder2{
+      transform: translate(0px,20px);
+      color: white;
+      font-size: 40px;
+    }
+    #cubeb3:hover #textholder3{
+      transform: translate(0px,20px);
+      color: white;
+      font-size: 40px;
+    }
+    #cubeb4:hover #textholder4{
+      transform: translate(0px,20px);
+      color: white;
+      font-size: 40px;
+    }
+    #cubeb5:hover #textholder5{
+      transform: translate(0px,20px);
+      color: white;
+      font-size: 40px;
+    }
+    #cubeb6:hover #textholder6{
+      transform: translate(0px,20px);
+      color: white;
+      font-size: 40px;
+    }
+    #cubeb7:hover #textholder7{
+      transform: translate(0px,20px);
+      color: white;
+      font-size: 40px;
+    }
+    #cubeb8:hover #textholder8{
+      transform: translate(0px,20px);
+      color: white;
+      font-size: 40px;
+    }
+    
+    body{
+      font-family: 'Rajdhani';font-size: 20px;
+      background-color: rgb(2, 1, 1);
+      overflow: hidden;
+    }
+    .cubetext{
+      transition: 1s;
+      margin: 0px;
+      text-align: center;
+      font-size: larger;
+      border-radius: 0px;
+    }
+    
+    #textholder {
+      left: 780px;
+      width: 600px;
+      height: 400px;
+      top: -350px;
+    }
+    #textholder2 {
+      left: 450px;
+      width: 800px;
+      height: 400px;
+      top: -600px;
+    }
+    #textholder3 {
+      left: 900px;
+      width: 800px;
+      height: 400px;
+      top: -610px;
+    }
+    #textholder4 {
+      left: 670px;
+      width: 800px;
+      height: 400px;
+      top: -840px;
+    }
+    #textholder5 {
+      left: 530px;
+      width: 800px;
+      height: 400px;
+      top: -760px;
+    }
+    #textholder6 {
+      left: 480px;
+      width: 800px;
+      height: 400px;
+      top: -460px;
+    }
+    #textholder7 {
+      left: 870px;
+      width: 800px;
+      height: 400px;
+      top: -460px;
+    }
+    #textholder8 {
+      left: 820px;
+      width: 800px;
+      height: 400px;
+      top: -750px;
+    }
+    #boxes{      
+      position: relative;
+      top: 300px;
+      left: 10%;
+      margin-left: 0;
+      height: 400px;
+      width: 400px;
+    }
+    #cover{
+      margin: 0px;
+      top: -500px;
+      height: 1000px;
+      width: 1000px;
+      left: 50%;
+    }
+    </style>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+    <div id="topbar">
+      <a href="http://youtube.com">link #1</a>
+      <a href="https://www.google.com">link #2</a>
+      <a href="http://w3schools.com">link #3</a>
+      <a href="http://github.com">link #4</a>
+    </div>
+    <div id="boxes">
+      <a href="http://github.com">
+        <div class="background" id="cubeb1">
+          <div id="b11" class="delay2"></div>
+          <div id="b1" class="delay"></div>
+          <div id="cube1" ></div>
+          <div class="cubetext" id="textholder">
+            <p>this is some text</p>
+            <p>imagine some cool stuff here</p>
+          </div>
+        </div>
+      </a>
+      <a href="https://www.google.com">
+        <div class="background" id="cubeb2">
+          <div id="b22" class="delay2 spin"></div>
+          <div id="b2" ></div>
+          <div id="cube2" ></div>
+          <div class="cubetext" id="textholder2">
+            <p>more text</p>
+            <p>clicking down should take you to website</p>
+          </div>
+        </div>
+      </a>
+      <a href="http://w3schools.com">
+        <div class="background" id="cubeb3">
+          <div id="b33" class="delay2 spin"></div>
+          <div id="b3" ></div>
+          <div id="cube3" ></div>
+          <div class="cubetext" id="textholder3">
+            <p>more text</p>
+            <p>customize this with a link or text</p>
+          </div>
+        </div>
+      </a>
+      <a href="http://youtube.com">
+        <div class="background" id="cubeb4">
+          <div id="b44" class="delay2 spin"></div>
+          <div id="b4" ></div>
+          <div id="cube4" ></div>
+          <div class="cubetext" id="textholder4">
+            <p>more text</p>
+            <p>links,texts,images</p>
+          </div>
+        </div>
+      </a>
+      <a href="http://youtube.com">
+        <div class="background" id="cubeb5">
+          <div id="b55" class="delay2 spin"></div>
+          <div id="b5" ></div>
+          <div id="cube5" ></div>
+          <div class="cubetext" id="textholder5">
+            <p>more text</p>
+            <p>links,texts,images</p>
+          </div>
+        </div>
+      </a>
+    
+      <div class="background" id="cubeb6">
+        <div id="b66" class="delay2 spin"></div>
+        <div id="b6" ></div>
+        <div id="cube6" ></div>
+        <div class="cubetext" id="textholder6">
+          <p>more text</p>
+          <p>links,texts,images</p>
+        </div>
+      </div>
+    
+      <div class="background" id="cubeb7">
+        <div id="b77" class="delay2 spin"></div>
+        <div id="b7" ></div>
+        <div id="cube7" ></div>
+        <div class="cubetext" id="textholder7">
+          <p>more text</p>
+          <p>links,texts,images</p>
+        </div>
+      </div>
+    
+      <div class="background" id="cubeb8">
+        <div id="b88" class="delay2 spin"></div>
+        <div id="b8" ></div>
+        <div id="cube8" ></div>
+        <div class="cubetext" id="textholder8">
+          <p>more text</p>
+          <p>links,texts,images</p>
+        </div>
+      </div>
+    </div>
+    <div id="cover"></div>
+    </body>
+    <script>
+      console.log("remove the top:-100px in #topbar to show the topbar on line 27 ");
+    </script>
+  </html>
